@@ -10,14 +10,19 @@ from pathlib import Path
 # --------------------------------------------------------------------------- #
 # Paths
 # --------------------------------------------------------------------------- #
-ROOT = Path(__file__).resolve().parents[1]          # op26_project/
+ROOT = Path(__file__).resolve().parents[1]          # repo root
 DATA_RAW = ROOT / "data" / "raw"
 DATA_PROCESSED = ROOT / "data" / "processed"
 OUT_FIG = ROOT / "outputs" / "figures"
 OUT_CSV = ROOT / "outputs" / "csv"
 
-# Source datasets
-ACN_XLSX = ROOT.parent / "acndata_sessions.json.xlsx"      # provided file (one level up)
+# Source datasets -- first existing location wins (data/examples ships with the repo)
+_ACN_NAME = "acndata_sessions.json.xlsx"
+ACN_XLSX = next(
+    (p for p in (DATA_RAW / _ACN_NAME, ROOT / "data" / "examples" / _ACN_NAME, ROOT.parent / _ACN_NAME)
+     if p.exists()),
+    ROOT / "data" / "examples" / _ACN_NAME,
+)
 URBANEV_DIR = DATA_RAW / "ST-EVCDP" / "datasets"           # cloned UrbanEV repo
 
 for _d in (DATA_RAW, DATA_PROCESSED, OUT_FIG, OUT_CSV):
