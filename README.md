@@ -102,8 +102,8 @@ feedback loop improving its own decisions. The full numbers are in
 ## 🚀 Quick start
 
 ```bash
-git clone https://github.com/lokifergusion9/EV-Dynamic-Tariff-Optimization.git
-cd EV-Dynamic-Tariff-Optimization
+git clone https://github.com/lokifergusion9/EV-dynamic-tariff-optimization.git
+cd EV-dynamic-tariff-optimization
 pip install -r requirements.txt
 
 # Optional: UrbanEV cross-dataset comparison (enables figure 07, ~62 MB)
